@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  backend:
+    build: .
+    container_name: poker_backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      # Database connection info (matches your .env)
+      - POSTGRES_USER=app
+      - POSTGRES_PASSWORD=app_pw
+      - POSTGRES_DB=poker
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - DATABASE_URL=postgresql://app:app_pw@db:5432/poker
+    depends_on:
+      - db
+    networks:
+      - poker-net
+
+  db:
+    image: postgres:16
+    container_name: poker_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app_pw
+      POSTGRES_DB: poker
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./src/poker_backend/db/init:/docker-entrypoint-initdb.d
+    networks:
+      - poker-net
+
+networks:
+  poker-net:
+
+volumes:
+  db_data:

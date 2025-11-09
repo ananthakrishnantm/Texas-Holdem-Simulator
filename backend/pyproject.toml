@@ -1,0 +1,19 @@
+[project]
+name = "poker_backend"
+version = "0.1.0"
+description = "Poker game backend API"
+authors = [
+    {name = "Ananthakrishnan T M",email = "36600221+ananthakrishnantm@users.noreply.github.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0,<0.116.0",
+    "uvicorn>=0.30.0,<0.31.0",
+    "python-dotenv>=1.0.0,<2.0.0",
+    "psycopg[binary]>=3.2,<4.0",
+    "pokerkit==0.6.4"
+]
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
