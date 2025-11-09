@@ -1,0 +1,7 @@
+Build Instructions:
+just use docker-compose --build to run the app.
+
+game instructions:
+
+1. make sure to hit reset to start the game, and cards will be automatically asiisgned to each players.
+2. after giving actions of each player hit finish hand to see teh result.
